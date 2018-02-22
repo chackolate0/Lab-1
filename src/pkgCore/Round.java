@@ -7,59 +7,40 @@ public class Round {
 	private int ComeOutScore;
 	private eGameResult eGameResult;
 	private LinkedList<Roll> rolls = new LinkedList<Roll>();
+	Roll roll1 = new Roll;
 	int Score = 0;
 	private int rollCount = 0;
 	int firstScore;
+	int roll;
 	
 	public Round() {
 		
-		Roll roll = new Roll();
-		ComeOutScore = roll.getScore();
+		this.ComeOutScore = roll1.getScore();
+		rollCount++;
 
-		if (ComeOutScore == 2 || ComeOutScore == 3 ||
-				ComeOutScore == 12) {
-			
+		if(ComeOutScore == 2 || ComeOutScore ==3 || ComeOutScore == 12) {
 			this.eGameResult = eGameResult.CRAPS;
-			rollCount = 1;
-			System.out.println("First roll: "  + ComeOutScore + ". Round over.");
-		
 		}
-		
-		else if ( ComeOutScore == 7 || ComeOutScore == 11) {
-			
-			this.eGameResult = eGameResult.NATURAL; 
-			rollCount = 1;
-			System.out.println("First roll: "  + ComeOutScore + ". Round over.");
+		else if(ComeOutScore == 7 || ComeOutScore == 11) {
+			this.eGameResult = eGameResult.NATURAL;
 		}
-		
 		else {
 			this.eGameResult = eGameResult.POINT;
-			Score = roll.getScore();
-			firstScore = ComeOutScore;
-			System.out.println("First roll: "  + ComeOutScore);
+			int roll = roll1.getScore();
 		}
-		
-		while(Score!=firstScore) {
-			if (Score == 7) {
-				System.out.println("Round over.");
-			}
-			else {
-				Score = roll.getScore();
-			}
-		}
-		if(Score == firstScore) {
-			System.out.println("You rolled a " + Score + " . Round over.");
-		}
-
-		// TODO: value the eGameResult after the round is complete
-		if(ComeOutScore==firstScore) {
+		if(roll == 7) {
 			this.eGameResult = eGameResult.SEVEN_OUT;
 		}
-		else if (ComeOutScore==Score) {
-			this.eGameResult = eGameResult.POINT;
+		else {
+			while(roll!=7) {
+				if(roll == ComeOutScore) {
+				System.out.println("Round over.");
+				}
+				else {
+					roll = roll1.getScore();
+				}
+			}
 		}
-	}
-
 	public int RollCount() {
 		// Return the roll count
 		return rollCount;

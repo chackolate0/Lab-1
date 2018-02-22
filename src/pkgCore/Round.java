@@ -7,7 +7,7 @@ public class Round {
 	private int ComeOutScore;
 	private eGameResult eGameResult;
 	private LinkedList<Roll> rolls = new LinkedList<Roll>();
-	Roll roll1 = new Roll;
+	Roll roll1 = new Roll();
 	int Score = 0;
 	private int rollCount = 0;
 	int firstScore;
@@ -35,9 +35,10 @@ public class Round {
 			while(roll!=7) {
 				if(roll == ComeOutScore) {
 				System.out.println("Round over.");
-				}
+					}
 				else {
 					roll = roll1.getScore();
+					}
 				}
 			}
 		}
